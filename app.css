@@ -9,10 +9,14 @@
 #wrapper {
   background: #f1f1f1;
 
-  /* height: 100vh; */
+  min-height: 100vh;
   padding-top: 4rem;
   padding-bottom: 6rem;
 }
+body {
+  position: relative;
+}
+
 main {
   display: block;
   /* background-color: #b5b5b5; */
@@ -130,82 +134,20 @@ header {
   padding: 0.8rem 1.2rem;
 }
 
-.btn {
-  border-radius: 0.6rem;
-  outline: none;
-  padding: 1px 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s; /* Add smooth transitions for a better user experience */
-  border: none;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Add a subtle box-shadow on hover */
-}
-
-.btn:hover {
-  background-color: var(--grey-50);
-}
-
-.btn--green {
-  background-color: var(--green);
-  color: var(--grey-200);
-  height: 32px;
-  width: 32px;
-}
-.btn--white {
-  background-color: white;
-  padding: 0.9rem 0.9rem;
-  font-size: medium;
-}
-.btn--bell {
-  background-color: var(--grey-200);
-}
-.btn--theme {
-  background-color: var(--grey-200);
-  color: var(--light);
-  height: 32px;
-  width: 127px;
-}
-.btn--name {
-  position: relative;
-  width: 9rem;
-  text-align: left;
-  display: block;
-  background-color: var(--grey-200);
-  color: var(--light);
-}
-button.btn--name > div {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  bottom: 4px;
-  width: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80%;
-  background-color: var(--green);
-  border-radius: 0.5rem;
-  color: var(--grey-200);
-}
-
-#btn--green__sys {
-  visibility: visible;
-}
-#btn--green__phone {
-  display: none;
-}
-
 /* progress bar */
 .progress-bar {
-  width: 100%;
-  height: 20px;
-  background-color: #ddd;
-  margin-top: 20px;
+  width: 13rem;
+  height: 8px;
+  border-radius: 0.6rem;
+  background-color: var(--stroke-50);
+  margin-top: 10px;
 }
 
 .progress-bar-fill {
   height: 100%;
+  border-radius: 0.6rem;
   width: 0;
-  background-color: #4caf50; /* Green color, change as needed */
+  background-color: var(--mid); /* Green color, change as needed */
   transition: width 0.3s ease-in-out;
 }
 
@@ -278,6 +220,117 @@ button.btn--name > div {
 .content--p__body {
   color: var(--grey-100);
   font-size: medium;
+}
+
+/* Menu for user */
+.menu--wrapper {
+  width: 20rem;
+  position: absolute;
+  top: 5.5rem;
+  right: 1rem;
+  border-radius: 0.7rem;
+  padding: 0.5rem 0.7rem;
+  min-height: 10rem;
+  background-color: white;
+  display: none;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* buttons */
+button:focus {
+  outline: none;
+  border: 0.125rem solid #005bd3;
+}
+
+.btn {
+  border-radius: 0.6rem;
+  outline: none;
+  padding: 1px 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Add smooth transitions for a better user experience */
+  border: none;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Add a subtle box-shadow on hover */
+}
+
+.btn:hover {
+  background-color: var(--grey-50);
+}
+
+.btn--green {
+  background-color: var(--green);
+  color: var(--grey-200);
+  height: 32px;
+  width: 32px;
+}
+.btn--white {
+  background-color: white;
+  padding: 0.9rem 0.9rem;
+  font-size: medium;
+}
+.btn--bell {
+  background-color: var(--grey-200);
+}
+.btn--theme {
+  background-color: var(--grey-200);
+  color: var(--light);
+  height: 32px;
+  width: 127px;
+}
+.btn--name {
+  position: relative;
+  width: 9rem;
+  text-align: left;
+  display: block;
+  background-color: var(--grey-200);
+  color: var(--light);
+}
+button.btn--name > div {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  background-color: var(--green);
+  border-radius: 0.5rem;
+  color: var(--grey-200);
+}
+
+#btn--green__sys {
+  visibility: visible;
+}
+#btn--green__phone {
+  display: none;
+}
+
+button.menubtn {
+  background-color: transparent;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0.6rem 0.2rem;
+  transition: background-color 0.3s;
+}
+#menubtn--main {
+  background: #f1f1f1;
+}
+#menubtn--main:hover {
+  background-color: var(--stroke-200);
+}
+button.menubtn:focus {
+  outline: none;
+  border: 0.125rem solid #005bd3;
+}
+
+button.menubtn:hover {
+  outline: none;
+  background-color: var(--stroke-50);
 }
 
 /* small screen  */

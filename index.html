@@ -55,12 +55,25 @@
             />
           </svg>
         </button>
-        <button class="btn btn--name" id="btn--green__sys">
+        <button
+          class="btn btn--name"
+          onclick="toggleAccountMenu()"
+          id="btn--green__sys"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="profile-menu-content"
+        >
           Davii Collections
           <div><p>DC</p></div>
         </button>
 
-        <button class="btn btn--green" id="btn--green__phone">DC</button>
+        <button
+          onclick="toggleAccountMenu()"
+          class="btn btn--green"
+          id="btn--green__phone"
+        >
+          DC
+        </button>
       </div>
     </header>
     <div id="wrapper">
@@ -110,9 +123,12 @@
           </div>
           <div class="container--hero">
             <p>Use this personalized guide to get your store up and running.</p>
-            <p>1/5 completed</p>
-            <div class="progress-bar">
-              <div class="progress-bar-fill" id="progress-fill"></div>
+
+            <div style="display: flex; gap: 5px">
+              <p id="progressValue">1/5 completed</p>
+              <div class="progress-bar">
+                <div class="progress-bar-fill" id="progress-fill"></div>
+              </div>
             </div>
           </div>
           <div class="container-content" id="content">
@@ -1066,6 +1082,33 @@
               </div>
             </div>
           </div>
+        </div>
+        <!-- User Menu list -->
+        <div class="menu--wrapper" id="menuWrapper">
+          <ul
+            role="menu"
+            id="profile-menu-content"
+            aria-label=" Davii Collections"
+          >
+            <li>
+              <button class="menubtn" id="menubtn--main">
+                Davii Collections
+                <div><p>DC</p></div>
+              </button>
+            </li>
+            <li>
+              <button role="menuitem" class="menubtn">Help center</button>
+            </li>
+            <li>
+              <button role="menuitem" class="menubtn">Chnagelog</button>
+            </li>
+            <li>
+              <button role="menuitem" class="menubtn">Logout</button>
+            </li>
+            <li>
+              <button role="menuitem" class="menubtn">Davii Collections</button>
+            </li>
+          </ul>
         </div>
       </main>
     </div>

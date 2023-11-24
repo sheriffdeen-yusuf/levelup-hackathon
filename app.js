@@ -52,6 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const progressPercentage = (checkedCount / checkboxes.length) * 100;
     progressBarFill.style.width = `${progressPercentage}%`;
+
+    // Update progress text
+    const progressText = document.getElementById("progressValue");
+    progressText.textContent = `${checkedCount}/${checkboxes.length} completed`;
   }
 
   function toggleContent(clickedContentItem, show) {
@@ -65,3 +69,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+function toggleAccountMenu() {
+  const menuWrapper = document.getElementById("menuWrapper");
+  menuWrapper.style.display =
+    menuWrapper.style.display === "block" ? "none" : "block";
+}
