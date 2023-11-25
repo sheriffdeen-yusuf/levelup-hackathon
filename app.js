@@ -3,23 +3,6 @@ function toggleContentWrapper() {
   container.classList.toggle("active");
 }
 
-// function updateProgress(checkbox) {
-//   const progressBarFill = document.getElementById("progress-fill");
-//   const checkboxes = document.querySelectorAll(
-//     '.content--item__text input[type="checkbox"]'
-//   );
-//   let checkedCount = 0;
-
-//   checkboxes.forEach((checkbox) => {
-//     if (checkbox.checked) {
-//       checkedCount++;
-//     }
-//   });
-
-//   const progressPercentage = (checkedCount / checkboxes.length) * 100;
-//   progressBarFill.style.width = `${progressPercentage}%`;
-// }
-
 document.addEventListener("DOMContentLoaded", function () {
   const contentItems = document.querySelectorAll(".content--item");
   const progressBarFill = document.getElementById("progress-fill");
@@ -57,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const progressText = document.getElementById("progressValue");
     progressText.textContent = `${checkedCount}/${checkboxes.length} completed`;
   }
-
+  // toggle body content
   function toggleContent(clickedContentItem, show) {
     contentItems.forEach((contentItem) => {
       const contentText = contentItem.querySelector(".content-item__body");
@@ -68,10 +51,74 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-});
 
-function toggleAccountMenu() {
-  const menuWrapper = document.getElementById("menuWrapper");
-  menuWrapper.style.display =
-    menuWrapper.style.display === "block" ? "none" : "block";
-}
+  // toggle profile menu
+  const profileMenuTrigger = document.getElementById("profile-menu");
+  const profileMenuWrapper = document.getElementById("profile-menu-content");
+  const allProfileMenuItems =
+    profileMenuWrapper.querySelectorAll('[role="menuitem"]');
+
+  function closeProfileMenu() {
+    profileMenuTrigger.ariaExpanded = "false";
+    profileMenuTrigger.focus();
+  }
+
+  function handleProfileMenuArrowKeyPress(event, menuItemIndex) {
+    const isLastMenuItem = menuItemIndex === allProfileMenuItems.length - 1;
+    const isFirstMenuItem = menuItemIndex === 0;
+    const nextMenuItem = allProfileMenuItems.item(menuItemIndex + 1);
+    const previousMeunItem = allProfileMenuItems.item(menuItemIndex - 1);
+
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      if (isLastMenuItem) {
+        allProfileMenuItems.item(0).focus();
+        return;
+      }
+      nextMenuItem.focus();
+    }
+
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      if (isFirstMenuItem) {
+        allProfileMenuItems.item(allProfileMenuItems.length - 1).focus();
+        return;
+      }
+      previousMeunItem.focus();
+    }
+    // console.log(event);
+  }
+
+  function handleProfileMenuEscKeyPress(event) {
+    if (event.key === "Escape") {
+      toggleProfileMenu(); // basically gonna close up and cean everything
+    }
+  }
+
+  function openProfileMenu() {
+    profileMenuTrigger.ariaExpanded = "true";
+    allProfileMenuItems.item(0).focus();
+
+    profileMenuWrapper.addEventListener("keyup", handleProfileMenuEscKeyPress);
+
+    // for each item menu register and event listner
+    allProfileMenuItems.forEach(function (menuItem, menuItemIndex) {
+      menuItem.addEventListener("keyup", function (event) {
+        handleProfileMenuArrowKeyPress(event, menuItemIndex);
+      });
+    });
+  }
+
+  function toggleProfileMenu() {
+    profileMenuWrapper.style.display =
+      profileMenuWrapper.style.display === "block" ? "none" : "block";
+
+    const isExpanded =
+      profileMenuTrigger.attributes["aria-expanded"].value === "true";
+    if (isExpanded) {
+      closeProfileMenu();
+    } else {
+      openProfileMenu();
+    }
+  }
+
+  profileMenuTrigger.addEventListener("click", toggleProfileMenu);
+});

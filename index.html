@@ -56,9 +56,8 @@
           </svg>
         </button>
         <button
-          class="btn btn--name"
-          onclick="toggleAccountMenu()"
-          id="btn--green__sys"
+          class="btn btn--name btn--green__sys"
+          id="profile-menu"
           aria-haspopup="true"
           aria-expanded="false"
           aria-controls="profile-menu-content"
@@ -1084,32 +1083,32 @@
           </div>
         </div>
         <!-- User Menu list -->
-        <div class="menu--wrapper" id="menuWrapper">
-          <ul
-            role="menu"
-            id="profile-menu-content"
-            aria-label=" Davii Collections"
-          >
-            <li>
-              <button class="menubtn" id="menubtn--main">
-                Davii Collections
-                <div><p>DC</p></div>
-              </button>
-            </li>
-            <li>
-              <button role="menuitem" class="menubtn">Help center</button>
-            </li>
-            <li>
-              <button role="menuitem" class="menubtn">Chnagelog</button>
-            </li>
-            <li>
-              <button role="menuitem" class="menubtn">Logout</button>
-            </li>
-            <li>
-              <button role="menuitem" class="menubtn">Davii Collections</button>
-            </li>
-          </ul>
-        </div>
+
+        <ul
+          class="menu--wrapper"
+          role="menu"
+          id="profile-menu-content"
+          aria-label=" Davii Collections"
+        >
+          <li>
+            <button role="menuitem" class="menubtn" id="menubtn--main">
+              Davii Collections
+              <div><p>DC</p></div>
+            </button>
+          </li>
+          <li>
+            <button role="menuitem" class="menubtn">Help center</button>
+          </li>
+          <li>
+            <button role="menuitem" class="menubtn">Chnagelog</button>
+          </li>
+          <li>
+            <button role="menuitem" class="menubtn">Logout</button>
+          </li>
+          <li>
+            <button role="menuitem" class="menubtn">Davii Collections</button>
+          </li>
+        </ul>
       </main>
     </div>
     <script type="text/javascript" src="./app.js"></script>
