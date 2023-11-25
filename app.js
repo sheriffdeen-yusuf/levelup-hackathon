@@ -58,6 +58,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const allProfileMenuItems =
     profileMenuWrapper.querySelectorAll('[role="menuitem"]');
 
+  // notification menu
+  const notificationTrigger = document.getElementById("notification-trigger");
+  const notificationMenu = document.getElementById("notification-menu");
+  const allNotificationMenuItems =
+    notificationMenu.querySelectorAll('[role="menuitem"]');
+
   function closeProfileMenu() {
     profileMenuTrigger.ariaExpanded = "false";
     profileMenuTrigger.focus();
@@ -108,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function toggleProfileMenu() {
+    notificationMenu.style.display = "none";
     profileMenuWrapper.style.display =
       profileMenuWrapper.style.display === "block" ? "none" : "block";
 
@@ -121,4 +128,72 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   profileMenuTrigger.addEventListener("click", toggleProfileMenu);
+
+  // notification menu logic
+  function handleNotificationMenuArrowKeyPress(event, menuItemIndex) {
+    const isLastMenuItem =
+      menuItemIndex === allNotificationMenuItems.length - 1;
+    const isFirstMenuItem = menuItemIndex === 0;
+    const nextMenuItem = allNotificationMenuItems.item(menuItemIndex + 1);
+    const previousMeunItem = allNotificationMenuItems.item(menuItemIndex - 1);
+
+    if (event.key === "ArrowRight") {
+      if (isLastMenuItem) {
+        allNotificationMenuItems.item(0).focus();
+        return;
+      }
+      nextMenuItem.focus();
+    }
+    if (event.key === "ArrowLeft") {
+      if (isFirstMenuItem) {
+        allNotificationMenuItems.item(0).focus();
+      }
+      previousMeunItem.focus();
+    }
+  }
+  function handleNotificationMenuEscKeyPress(event) {
+    if (event.key === "Escape") {
+      toggleNotificationMenu(); // basically gonna close up and cean everything
+    }
+  }
+
+  function openNotificationMenu() {
+    notificationTrigger.ariaExpanded = "true";
+    allNotificationMenuItems.item(0).focus();
+
+    notificationMenu.addEventListener(
+      "keyup",
+      handleNotificationMenuEscKeyPress
+    );
+
+    allNotificationMenuItems.forEach(function (menuItem, menuItemIndex) {
+      menuItem.addEventListener("keyup", function (event) {
+        handleNotificationMenuArrowKeyPress(event, menuItemIndex);
+      });
+    });
+  }
+
+  function closeNotificationMenu() {
+    notificationTrigger.ariaExpanded = "false";
+    notificationTrigger.focus();
+  }
+
+  function toggleNotificationMenu() {
+    if (notificationMenu.style.display === "none") {
+      notificationMenu.style.display = "block";
+      profileMenuWrapper.style.display = "none";
+    } else {
+      notificationMenu.style.display = "none";
+    }
+
+    const isExpandedNotificationMenu =
+      notificationTrigger.attributes["aria-expanded"].value === "true";
+    if (isExpandedNotificationMenu) {
+      closeNotificationMenu();
+    } else {
+      openNotificationMenu();
+    }
+  }
+
+  notificationTrigger.addEventListener("click", toggleNotificationMenu);
 });

@@ -24,6 +24,11 @@ main {
   margin: 0 auto;
 }
 
+#horizontal-rule {
+  width: 100%;
+  border-bottom: 1px solid #e1e1e1;
+  margin-bottom: 4px;
+}
 /* colors palatee */
 :root {
   --grey-50: #656266;
@@ -158,6 +163,9 @@ header {
   background-color: white;
   border-radius: 0.8rem;
 }
+.toggle-button:hover {
+  background-color: #ddd !important;
+}
 
 .container-content {
   display: none;
@@ -226,7 +234,7 @@ header {
 .menu--wrapper {
   width: 20rem;
   position: absolute;
-  top: 5.5rem;
+  top: 5rem;
   right: 1rem;
   list-style: none;
   border-radius: 0.7rem;
@@ -234,9 +242,34 @@ header {
   background-color: white;
   display: none;
   border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* notification menu */
+.notification-menu {
+  width: 28rem;
+  position: absolute;
+  top: 5rem;
+  right: 1rem;
+  list-style: none;
+  border-radius: 0.7rem;
+  padding: 0.5rem 0.7rem;
+  background-color: white;
+  display: none;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.notification-alert {
+  margin-top: 0.5rem;
+  padding: 0.7rem 2rem;
+  background-color: #f1f1f1;
+  transition: all 0.3s;
+  color: #616161;
+  font-weight: 500;
+}
+.notification-alert:hover {
+  background-color: var(--stroke-200);
+}
 /* buttons */
 button:focus {
   outline: none;
@@ -250,7 +283,7 @@ button:focus {
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s; /* Add smooth transitions for a better user experience */
   border: none;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Add a subtle box-shadow on hover */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow on hover */
 }
 
 .btn:hover {
@@ -303,7 +336,7 @@ button.btn--name > div {
 .btn--green__sys {
   visibility: visible;
 }
-#btn--green__phone {
+.btn--green__phone {
   display: none;
 }
 
@@ -313,12 +346,47 @@ button.menubtn {
   border-radius: 0.5rem;
   border: none;
   cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
   text-align: left;
   padding: 0.6rem 0.2rem;
   transition: background-color 0.3s;
 }
 #menubtn--main {
-  background: #f1f1f1;
+  background: #dbdbdb;
+  position: relative;
+  color: #1c181d;
+  padding: 0.7rem 2.9rem;
+  font-weight: bolder;
+  font-size: large;
+  margin-bottom: 2px;
+}
+
+button#menubtn--main svg {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+}
+.menubtn--allstore {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 5px;
+}
+button#menubtn--main > div {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  font-weight: 500;
+  background-color: var(--green);
+  border-radius: 0.5rem;
+  color: var(--grey-200);
 }
 #menubtn--main:hover {
   background-color: var(--stroke-200);
@@ -357,10 +425,10 @@ button.menubtn:hover {
   .btn {
     padding: 0px 1px;
   }
-  #btn__phone {
+  .btn__phone {
     background-color: transparent;
   }
-  #btn--green__phone {
+  .btn--green__phone {
     display: block;
   }
   .btn--green__sys {
@@ -378,7 +446,7 @@ label {
 }
 label:focus {
   outline: none;
-  border: none;
+  border: 0.125rem solid #005bd3;
 }
 label input {
   display: block;
@@ -404,7 +472,8 @@ input + span:hover > svg:nth-of-type(2) {
   opacity: 1;
 }
 input:focus > span > svg:nth-of-type(5) {
-  opacity: 1;
+  outline: none;
+  border: 0.125rem solid #005bd3;
 }
 input:checked + span > svg {
   animation-name: checkSvgAnimation;
